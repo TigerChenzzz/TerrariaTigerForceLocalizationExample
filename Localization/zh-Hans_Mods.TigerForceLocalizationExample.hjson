@@ -1,0 +1,46 @@
+ForceLocalizations: {
+	TigerForceLocalizationExample: {
+		Content: {
+			Items: {
+				ExampleSword: {
+					UseAnimation: {
+						1: {
+							// OldString: "get an item of id "
+							NewString: 获取了一个 id 为
+						}
+
+						2: {
+							// OldString: !
+							NewString_1: 的物品!
+							NewString_2: 的 Buff!
+						}
+
+						3: {
+							// OldString: "get a buff of id "
+							NewString: 获取了一个 id 为
+						}
+
+						4: {
+							// OldString: Wrong use type!
+							NewString: 使用方式有误!
+						}
+					}
+
+					AltUseAnimation: {
+						1: {
+							// OldString: "use type has changed to "
+							NewString: 使用方式已被更改为
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+Items: {
+	ExampleSword: {
+		DisplayName: 模板剑
+		// Tooltip: ""
+	}
+}

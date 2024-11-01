@@ -1,0 +1,46 @@
+ForceLocalizations: {
+	TigerForceLocalizationExample: {
+		Content: {
+			Items: {
+				ExampleSword: {
+					UseAnimation: {
+						1: {
+							OldString: "get an item of id "
+							NewString: "get an item of id "
+						}
+
+						2: {
+							OldString: !
+							NewString_1: !
+							NewString_2: !
+						}
+
+						3: {
+							OldString: "get a buff of id "
+							NewString: "get a buff of id "
+						}
+
+						4: {
+							OldString: Wrong use type!
+							NewString: Wrong use type!
+						}
+					}
+
+					AltUseAnimation: {
+						1: {
+							OldString: "use type has changed to "
+							NewString: "use type has changed to "
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+Items: {
+	ExampleSword: {
+		DisplayName: Example Sword
+		Tooltip: ""
+	}
+}
