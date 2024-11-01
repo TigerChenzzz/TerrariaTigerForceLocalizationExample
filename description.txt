@@ -1,1 +1,1 @@
-Modify this file with a description of your mod.
+这是 TigerForceLocalizationLib 的示例模组
