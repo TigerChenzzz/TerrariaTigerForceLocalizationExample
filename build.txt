@@ -1,6 +1,6 @@
 displayName = Tiger's Force Localization Example
 author = Tigerzzz
-version = 0.1
-modReferences = TigerForceLocalizationLib
+version = 0.2.0
+modReferences = TigerForceLocalizationLib@0.2.0
 includeSource = true
 buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*, .git\*, .*, Properties\*

@@ -2,6 +2,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 
 namespace TigerForceLocalizationExample.Content.Items;
 
@@ -51,10 +52,20 @@ public class ExampleSword : ModItem {
     public override bool AltFunctionUse(Player player) {
         return true;
     }
+    public override void SaveData(TagCompound tag) {
+        if (useType != 0)
+            tag["useType"] = useType;
+    }
+    public override void LoadData(TagCompound tag) => LoadDataInner(tag);
+    private void LoadDataInner(TagCompound tag) {
+        if (tag.ContainsKey("useType"))
+            useType = tag.GetInt("useType");
+    }
 
     public override void AddRecipes() {
         Recipe recipe = CreateRecipe();
         recipe.AddIngredient(ItemID.DirtBlock, 10);
+        recipe.AddIngredient(null, "ExampleSword", 1);
         recipe.AddTile(TileID.WorkBenches);
         recipe.Register();
     }

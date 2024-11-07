@@ -4,10 +4,14 @@ using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using TigerForceLocalizationLib;
+using TigerForceLocalizationLib.Filters;
+using TypeFilter = TigerForceLocalizationLib.Filters.TypeFilter;
 
 namespace TigerForceLocalizationExample;
 
 public class TigerForceLocalizationExample : Mod {
+    // ↓↓↓将此值设置为 true 并且清空 .hjson 文件中的内容 (不要删除 .hjson 文件) 以进行初次构建
+    private readonly static bool firstRegister = false;
     public override void PostSetupContent() {
         // 这里作为示例就直接把自己作为本地化的目标模组了, 实际上应该是需要本地化的模组
         string targetModName = "TigerForceLocalizationExample";
@@ -15,6 +19,17 @@ public class TigerForceLocalizationExample : Mod {
         // 对于弱引用需先判断模组是否已加载
         if (!ModLoader.HasMod(targetModName))
             return;
+
+        if (firstRegister) {
+            TigerForceLocalizationHelper.LocalizeAll(nameof(TigerForceLocalizationExample), targetModName, true, filters: new() {
+                TypeFilter = TypeFilter.MismatchFullName(typeof(TigerForceLocalizationExample).FullName) 
+                & new TypeFilter(type => !type.FullName.StartsWith(typeof(TigerForceLocalizationExample).FullName + '+')), // 筛掉此类和此类的内嵌类
+                MethodFilter = MethodFilter.CommonMethodFilter,
+                CursorFilter = ILCursorFilter.CommonCursorFilter,
+            });
+            TigerForceLocalizationHelper.ShowLocalizationRegisterProgress(); // 这一句放在上面或者下面或者 Load 或者 OnModLoad 等地方都可以, 只要是加载阶段就好
+            return;
+        }
 
         // 以下任意方法均可使用
         switch (Main.rand.Next(6)) {
